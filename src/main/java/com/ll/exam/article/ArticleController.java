@@ -3,10 +3,17 @@ package com.ll.exam.article;
 import com.ll.exam.Rq;
 
 import com.ll.exam.article.dto.ArticleDto;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleController {
+    private ArticleService articleService;
+
+    public ArticleController(){
+        articleService = new ArticleService();
+    }
+
     public void showList(Rq rq) {
         List<ArticleDto> articleDtos = new ArrayList<>();
         articleDtos.add(new ArticleDto(5, "제목 5", "내용 5"));
@@ -28,7 +35,7 @@ public class ArticleController {
         String title = rq.getParam("title", "none");
         String body = rq.getParam("body", "none");
 
-        rq.appendBody(title);
-        rq.appendBody(body);
+        long id = articleService.write(title,body);
+        rq.appendBody("%d 번 게시물이 등록되었습니다.".formatted(id));
     }
 }

@@ -5,6 +5,7 @@ public class ArticleDto {
     private String title;
     private String body;
 
+
     @Override
     public String toString() {
         return "ArticleDto{" +
