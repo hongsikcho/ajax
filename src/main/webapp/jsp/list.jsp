@@ -12,6 +12,6 @@
 
 
     <% for ( ArticleDto article : articles ) { %>
-    <li><%=article.getId()%>. <%=article.getTitle()%></li>
+    <li><a href="/usr/article/detail?id=<%=article.getId()%>"> <%=article.getId()%>. <%=article.getTitle()%></a></li>
     <% } %>
 </ul>

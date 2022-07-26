@@ -71,6 +71,13 @@ public class Rq {
         return req.getRequestURI();
     }
 
+    public String getActionPath(){
+        String[] sBits =  req.getRequestURI().split("/");
+
+        return "/%s/%s/%s".formatted(sBits[1],sBits[2],sBits[3]);
+
+    }
+
     public String getParam(String paramName, String defaultValue) {
         String value = req.getParameter(paramName);
 

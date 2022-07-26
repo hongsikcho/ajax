@@ -35,4 +35,12 @@ public class ArticleController {
         rq.appendBody("%d 번 게시물이 등록되었습니다.".formatted(id));
 
     }
+
+    public void showDetail(Rq rq) {
+        long id = 1;
+        ArticleDto articleDto = articleService.findById(id);
+
+        rq.setAttr("articleDto",articleDto);
+        rq.view("detail");
+    }
 }
