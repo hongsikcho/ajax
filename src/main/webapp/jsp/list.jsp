@@ -9,6 +9,8 @@
 <h1>게시물 리스트</h1>
 
 <ul>
+
+
     <% for ( ArticleDto article : articles ) { %>
     <li><%=article.getId()%>. <%=article.getTitle()%></li>
     <% } %>

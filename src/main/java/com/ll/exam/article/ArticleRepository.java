@@ -5,10 +5,10 @@ import com.ll.exam.article.dto.ArticleDto;
 import java.util.*;
 
 public class ArticleRepository {
-    private List<ArticleDto> datum;
-    private long lastId;
+    private static List<ArticleDto> datum;
+    private static long lastId;
 
-    public ArticleRepository(){
+    static {
         datum = new ArrayList<ArticleDto>();
         lastId = 0;
     }
@@ -17,7 +17,14 @@ public class ArticleRepository {
         long id = ++lastId;
         ArticleDto a = new ArticleDto(id,title,body);
         datum.add(a);
-
         return id;
+    }
+
+    public long writeId() {
+        return lastId;
+    }
+
+    public List<ArticleDto> findAll() {
+        return datum;
     }
 }
