@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ArticleController {
     public void showList(Rq rq) {
-        List<com.ll.exam.article.dto.ArticleDto> articleDtos = new ArrayList<>();
+        List<ArticleDto> articleDtos = new ArrayList<>();
         articleDtos.add(new ArticleDto(5, "제목 5", "내용 5"));
         articleDtos.add(new ArticleDto(4, "제목 4", "내용 4"));
         articleDtos.add(new ArticleDto(3, "제목 3", "내용 3"));
@@ -16,6 +16,19 @@ public class ArticleController {
         articleDtos.add(new ArticleDto(1, "제목 1", "내용 1"));
 
         rq.setAttr("articles", articleDtos);
-        rq.view("usr/article/list");
+        rq.view("list");
+    }
+
+    public void showWrite(Rq rq) {
+        rq.view("write");
+    }
+
+    public void doWrite(Rq rq) {
+
+        String title = rq.getParam("title", "none");
+        String body = rq.getParam("body", "none");
+
+        rq.appendBody(title);
+        rq.appendBody(body);
     }
 }
