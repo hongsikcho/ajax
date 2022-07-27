@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.ll.exam.article.dto.ArticleDto" %>
-
-<h1>게시물 작성</h1>
-
+<html style="width:600px; margin: auto;">
 <script>
     function ArticleSave__submitForm(form) {
         form.title.value = form.title.value.trim();
@@ -22,6 +20,8 @@
     }
 </script>
 
+
+<%@ include file="../common/header.jsp"%>
 <%
     ArticleDto article = (ArticleDto) request.getAttribute("article");
 %>
@@ -57,3 +57,4 @@
         </div>
     </div>
 </form>
+</html>

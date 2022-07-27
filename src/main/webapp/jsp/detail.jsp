@@ -1,16 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.ll.exam.article.dto.ArticleDto" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: 홍식
-  Date: 2022-07-26
-  Time: 오후 11:08
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
+<%@ page import="java.util.List" %>
+
+
+<html style="width:600px; margin: auto;">
+<%@ include file="../common/header.jsp"%>
 <body>
 
 <%

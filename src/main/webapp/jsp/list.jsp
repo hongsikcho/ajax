@@ -7,7 +7,7 @@
 %>
 
 <style>
-div{
+.body{
     display: flex;
     font-size: 12px;
 }
@@ -29,15 +29,12 @@ a:hover{
     text-align: end;
 }
 </style>
-
-<h1>게시물 리스트</h1>
-
-
-
+<html style="width:700px; margin: auto;">
+<%@ include file="../common/header.jsp"%>
 
     <% for (ArticleDto article : articles) { %>
 
-    <div>
+    <div class="body">
         <span><%=article.getId()%>.</span>
         <span><a href="/usr/article/detail/free/<%=article.getId()%>"><%=article.getTitle()%></a></span>
         <span class="delete"><a onclick="if ( !confirm('정말로 삭제하시겠습니까?') ) return false;"
@@ -45,4 +42,5 @@ a:hover{
         <a href="/usr/article/modify/free/<%=article.getId()%>">수정</a></span>
     </div>
     <% } %>
-</ul>
+</html>
+
