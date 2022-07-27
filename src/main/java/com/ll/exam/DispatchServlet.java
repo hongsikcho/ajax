@@ -33,8 +33,10 @@ public class DispatchServlet extends HttpServlet {
                         break;
                     case "/usr/article/detail":
                         articleController.showDetail(rq);
+                        break;
                     case "/usr/article/remove":
                         articleController.showRemove(rq);
+                        break;
                     case "/usr/article/modify":
                         articleController.showModify(rq);
                 }
@@ -46,6 +48,7 @@ public class DispatchServlet extends HttpServlet {
                         break;
                     case "/usr/article/modify":
                         articleController.doModify(rq);
+                        break;
                 }
                 break;
         }

@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.ll.exam.article.dto.ArticleDto" %>
-
-<%
-    List<ArticleDto> articles = (List<ArticleDto>) request.getAttribute("articles");
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <style>
 .body{
@@ -32,15 +29,18 @@ a:hover{
 <html style="width:700px; margin: auto;">
 <%@ include file="../common/header.jsp"%>
 
-    <% for (ArticleDto article : articles) { %>
+<c:forEach items="${articles}" var="article">
 
     <div class="body">
-        <span><%=article.getId()%>.</span>
-        <span><a href="/usr/article/detail/free/<%=article.getId()%>"><%=article.getTitle()%></a></span>
+        <span>${article.id}</span>
+
+        <span><a href="/usr/article/detail/free/${article.id}">${article.title}</a></span>
+
         <span class="delete"><a onclick="if ( !confirm('정말로 삭제하시겠습니까?') ) return false;"
-           href="/usr/article/remove/free/<%=article.getId()%>">삭제</a>
-        <a href="/usr/article/modify/free/<%=article.getId()%>">수정</a></span>
+           href="/usr/article/remove/free/${article.id}">삭제</a>
+        <a href="/usr/article/modify/free/${article.id}">수정</a></span>
+
     </div>
-    <% } %>
+</c:forEach>
 </html>
 

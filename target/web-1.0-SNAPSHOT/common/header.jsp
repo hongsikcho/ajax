@@ -51,7 +51,7 @@
                 <a  href="/usr/article/write/free">자유게시물 작성</a>
             </li>
             <li>
-                <a  href="/usr/article/list/free">자유게시물 리스트</a>
+                <a  href="/usr/article/list">자유게시물 리스트</a>
             </li>
         </ul>
     </div>

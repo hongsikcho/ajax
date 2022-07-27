@@ -7,16 +7,18 @@
 <%@ include file="../common/header.jsp"%>
 <body>
 
-<%
-    ArticleDto article = (ArticleDto) request.getAttribute("article");
-%>
 
 <h1>게시물 리스트</h1>
 
-<%if(article != null){%>
-<div><%=article.getId()%></div>
-<div><%=article.getTitle()%></div>
-<div><%=article.getBody()%></div>
-    <%}%>
+
+<div>
+    ID : ${article.id}
+</div>
+<div>
+    TITLE : ${article.title}
+</div>
+<div>
+    BODY : ${article.body}
+</div>
 </body>
 </html>

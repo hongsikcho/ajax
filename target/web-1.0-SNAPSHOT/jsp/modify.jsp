@@ -23,21 +23,15 @@
 
 <%@ include file="../common/header.jsp"%>
 <%
-    ArticleDto article = (ArticleDto) request.getAttribute("article");
+
 %>
 
-<h1>게시물 리스트</h1>
-
-<%if(article != null){%>
-<div><%=article.getId()%></div>
-<div><%=article.getTitle()%></div>
-<div><%=article.getBody()%></div>
-<%}%>
+<h1>게시물 수정페이지</h1>
 
 
-<form method="POST" action="/usr/article/modify/free/<%=article.getId()%>"onsubmit="ArticleSave__submitForm(this); return false;">
+<form method="POST" action="/usr/article/modify/free/${article.id}"onsubmit="ArticleSave__submitForm(this); return false;">
     <div>
-        <div><%=article.getId()%>번 글</div>
+        <div>${article.id}번 글</div>
         <div>
             <input name="title" type="text" maxlength="50" placeholder="제목을 입력해주세요." />
         </div>
