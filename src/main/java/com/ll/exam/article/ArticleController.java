@@ -32,8 +32,8 @@ public class ArticleController {
         String body = rq.getParam("body", "none");
 
         long id = articleService.write(title,body);
-        rq.appendBody("%d 번 게시물이 등록되었습니다.".formatted(id));
-        rq.appendBody("<div><a href=\"/usr/article/list/free\">리스트로 이동</a></div>");
+        rq.println("%d 번 게시물이 등록되었습니다.".formatted(id));
+        rq.println("<div><a href=\"/usr/article/list/free\">리스트로 이동</a></div>");
 
     }
 
@@ -41,15 +41,15 @@ public class ArticleController {
         long id = rq.getLongPathValueByIndex(1, 0);
 
         if (id == 0) {
-            rq.appendBody("번호를 입력해주세요.");
+            rq.println("번호를 입력해주세요.");
             return;
         }
 
         ArticleDto articleDto = articleService.findById(id);
 
         if (articleDto == null) {
-            rq.appendBody("해당 글이 존재하지 않습니다.");
-            rq.appendBody("<div><a href=\"/usr/article/list/free\">리스트로 이동</a></div>");
+            rq.println("해당 글이 존재하지 않습니다.");
+            rq.println("<div><a href=\"/usr/article/list/free\">리스트로 이동</a></div>");
             return;
         }
 
@@ -61,14 +61,14 @@ public class ArticleController {
         long id = rq.getLongPathValueByIndex(1, 0);
 
         if (id == 0) {
-            rq.appendBody("번호를 입력해주세요.");
+            rq.println("번호를 입력해주세요.");
             return;
         }
 
         ArticleDto articleDto = articleService.findById(id);
 
         if (articleDto == null) {
-            rq.appendBody("해당 글이 존재하지 않습니다.");
+            rq.println("해당 글이 존재하지 않습니다.");
             return;
         }
         articleService.remove(articleDto);
@@ -80,14 +80,14 @@ public class ArticleController {
         long id = rq.getLongPathValueByIndex(1, 0);
 
         if (id == 0) {
-            rq.appendBody("번호를 입력해주세요.");
+            rq.println("번호를 입력해주세요.");
             return;
         }
 
         ArticleDto articleDto = articleService.findById(id);
 
         if (articleDto == null) {
-            rq.appendBody("해당 글이 존재하지 않습니다.");
+            rq.println("해당 글이 존재하지 않습니다.");
             return;
         }
 
@@ -103,7 +103,7 @@ public class ArticleController {
 
 
         articleService.modify(idx,title,body);
-        rq.appendBody("%d 번 게시물이 수정되었습니다.".formatted(idx));
-        rq.appendBody("<div><a href=\"/usr/article/list/free\">리스트로 이동</a></div>");
+        rq.println("%d 번 게시물이 수정되었습니다.".formatted(idx));
+        rq.println("<div><a href=\"/usr/article/list/free\">리스트로 이동</a></div>");
     }
 }
