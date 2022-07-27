@@ -33,6 +33,7 @@ public class ArticleController {
 
         long id = articleService.write(title,body);
         rq.appendBody("%d 번 게시물이 등록되었습니다.".formatted(id));
+        rq.appendBody("<div><a href=\"/usr/article/list/free\">리스트로 이동</a></div>");
 
     }
 
@@ -48,6 +49,7 @@ public class ArticleController {
 
         if (articleDto == null) {
             rq.appendBody("해당 글이 존재하지 않습니다.");
+            rq.appendBody("<div><a href=\"/usr/article/list/free\">리스트로 이동</a></div>");
             return;
         }
 
@@ -102,5 +104,6 @@ public class ArticleController {
 
         articleService.modify(idx,title,body);
         rq.appendBody("%d 번 게시물이 수정되었습니다.".formatted(idx));
+        rq.appendBody("<div><a href=\"/usr/article/list/free\">리스트로 이동</a></div>");
     }
 }
