@@ -32,8 +32,7 @@ public class ArticleController {
         String body = rq.getParam("body", "none");
 
         long id = articleService.write(title,body);
-        rq.println("%d 번 게시물이 등록되었습니다.".formatted(id));
-        rq.println("<div><a href=\"/usr/article/list/free\">리스트로 이동</a></div>");
+        rq.replace("/usr/article/detail/free/%d".formatted(id), "%d번 게시물이 생성 되었습니다.".formatted(id));
 
     }
 
@@ -41,7 +40,7 @@ public class ArticleController {
         long id = rq.getLongPathValueByIndex(1, 0);
 
         if (id == 0) {
-            rq.println("번호를 입력해주세요.");
+            rq.historyBack("번호를 입력해주세요.");
             return;
         }
 
@@ -61,7 +60,7 @@ public class ArticleController {
         long id = rq.getLongPathValueByIndex(1, 0);
 
         if (id == 0) {
-            rq.println("번호를 입력해주세요.");
+            rq.historyBack("번호를 입력해주세요.");
             return;
         }
 
@@ -72,7 +71,7 @@ public class ArticleController {
             return;
         }
         articleService.remove(articleDto);
-        showList(rq);
+        rq.replace("/usr/article/list/free", "%d번 게시물이 삭제되었습니다.".formatted(id));
 
     }
 
@@ -80,14 +79,14 @@ public class ArticleController {
         long id = rq.getLongPathValueByIndex(1, 0);
 
         if (id == 0) {
-            rq.println("번호를 입력해주세요.");
+            rq.historyBack("번호를 입력해주세요.");
             return;
         }
 
         ArticleDto articleDto = articleService.findById(id);
 
         if (articleDto == null) {
-            rq.println("해당 글이 존재하지 않습니다.");
+            rq.historyBack("해당 글이 존재하지 않습니다.");
             return;
         }
 
@@ -103,7 +102,6 @@ public class ArticleController {
 
 
         articleService.modify(idx,title,body);
-        rq.println("%d 번 게시물이 수정되었습니다.".formatted(idx));
-        rq.println("<div><a href=\"/usr/article/list/free\">리스트로 이동</a></div>");
+        rq.replace("/usr/article/list/free", "%d번 게시물이 수정되었습니다.".formatted(idx));
     }
 }

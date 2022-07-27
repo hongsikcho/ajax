@@ -126,4 +126,35 @@ public class Rq {
 
         return Long.parseLong(value);
     }
+
+    public void replace(String url, String msg) {
+        if(msg.trim().length() > 0 && msg != null){
+            println("""
+                    <script>alert("%s");</script>
+                    """.formatted(msg));
+
+            println("""
+                <script>
+                window.location.replace("%s");
+                </script>
+                """.formatted(url));
+        }
+
+    }
+
+    public void historyBack(String msg) {
+        if (msg != null && msg.trim().length() > 0) {
+            println("""
+                    <script>
+                    alert("%s");
+                    </script>
+                    """.formatted(msg));
+        }
+
+        println("""
+                <script>
+                history.back();
+                </script>
+                """);
+    }
 }
