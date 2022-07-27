@@ -13,7 +13,7 @@
 
     <% for ( ArticleDto article : articles ) { %>
     <li><a href="/usr/article/detail/free/<%=article.getId()%>"> <%=article.getId()%>. <%=article.getTitle()%></a>
-    <div><a href="/usr/article/remove/free/<%=article.getId()%>">삭제</a></div></li>
+    <div><a onclick="if ( !confirm('정말로 삭제하시겠습니까?') ) return false;" href="/usr/article/remove/free/<%=article.getId()%>">삭제</a></div></li>
     <div><a href="/usr/article/modify/free/<%=article.getId()%>">수정</a></div></li>
     <% } %>
 </ul>
