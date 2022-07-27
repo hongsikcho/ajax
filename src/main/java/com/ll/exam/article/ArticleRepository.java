@@ -3,6 +3,7 @@ package com.ll.exam.article;
 import com.ll.exam.article.dto.ArticleDto;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 public class ArticleRepository {
     private static List<ArticleDto> datum;
@@ -10,10 +11,18 @@ public class ArticleRepository {
 
     static {
         datum = new ArrayList<ArticleDto>();
-        lastId = 0;
+        makeTestData();
     }
 
-    public long write(String title, String body) {
+    public static void makeTestData() {
+        IntStream.rangeClosed(1, 10).forEach(id -> {
+            String title = "제목%d".formatted(id);
+            String body = "내용%d".formatted(id);
+            write(title, body);
+        });
+    }
+
+    public static long write(String title, String body) {
         long id = ++lastId;
         ArticleDto a = new ArticleDto(id,title,body);
         datum.add(a);
@@ -24,16 +33,30 @@ public class ArticleRepository {
         return lastId;
     }
 
-    public List<ArticleDto> findAll() {
+    public static List<ArticleDto> findAll() {
         return datum;
     }
 
-    public ArticleDto findById(long id) {
+    public static ArticleDto findById(long id) {
         for(ArticleDto a : datum){
             if(a.getId() == id){
                 return a;
             }
         }
         return null;
+    }
+
+    public void remove(ArticleDto articleDto) {
+        datum.remove(articleDto);
+    }
+
+    public void modify(long idx, String title, String body) {
+        for(ArticleDto a : datum){
+            if(a.getId() == idx){
+                a.setTitle(title);
+                a.setBody(body);
+                return;
+            }
+        }
     }
 }

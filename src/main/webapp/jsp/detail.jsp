@@ -14,7 +14,7 @@
 <body>
 
 <%
-    ArticleDto article = (ArticleDto) request.getAttribute("articleDto");
+    ArticleDto article = (ArticleDto) request.getAttribute("article");
 %>
 
 <h1>게시물 리스트</h1>

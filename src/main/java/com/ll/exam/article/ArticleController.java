@@ -37,10 +37,70 @@ public class ArticleController {
     }
 
     public void showDetail(Rq rq) {
-        long id = 1;
+        long id = rq.getLongPathValueByIndex(1, 0);
+
+        if (id == 0) {
+            rq.appendBody("번호를 입력해주세요.");
+            return;
+        }
+
         ArticleDto articleDto = articleService.findById(id);
 
-        rq.setAttr("articleDto",articleDto);
+        if (articleDto == null) {
+            rq.appendBody("해당 글이 존재하지 않습니다.");
+            return;
+        }
+
+        rq.setAttr("article", articleDto);
         rq.view("detail");
+    }
+
+    public void showRemove(Rq rq) {
+        long id = rq.getLongPathValueByIndex(1, 0);
+
+        if (id == 0) {
+            rq.appendBody("번호를 입력해주세요.");
+            return;
+        }
+
+        ArticleDto articleDto = articleService.findById(id);
+
+        if (articleDto == null) {
+            rq.appendBody("해당 글이 존재하지 않습니다.");
+            return;
+        }
+        articleService.remove(articleDto);
+        showList(rq);
+
+    }
+
+    public void showModify(Rq rq) {
+        long id = rq.getLongPathValueByIndex(1, 0);
+
+        if (id == 0) {
+            rq.appendBody("번호를 입력해주세요.");
+            return;
+        }
+
+        ArticleDto articleDto = articleService.findById(id);
+
+        if (articleDto == null) {
+            rq.appendBody("해당 글이 존재하지 않습니다.");
+            return;
+        }
+
+        rq.setAttr("article", articleDto);
+        rq.view("modify");
+    }
+
+    public void doModify(Rq rq) {
+        long idx = rq.getLongParam("id" , 0);
+        String title = rq.getParam("title", "none");
+        String body = rq.getParam("body", "none");
+
+
+
+        articleService.modify(idx,title,body);
+        rq.appendBody("%d 번 게시물이 수정되었습니다.".formatted(idx));
     }
 }

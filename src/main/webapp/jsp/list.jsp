@@ -12,6 +12,8 @@
 
 
     <% for ( ArticleDto article : articles ) { %>
-    <li><a href="/usr/article/detail?id=<%=article.getId()%>"> <%=article.getId()%>. <%=article.getTitle()%></a></li>
+    <li><a href="/usr/article/detail/free/<%=article.getId()%>"> <%=article.getId()%>. <%=article.getTitle()%></a>
+    <div><a href="/usr/article/remove/free/<%=article.getId()%>">삭제</a></div></li>
+    <div><a href="/usr/article/modify/free/<%=article.getId()%>">수정</a></div></li>
     <% } %>
 </ul>
