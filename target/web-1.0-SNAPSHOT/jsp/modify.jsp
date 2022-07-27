@@ -35,10 +35,9 @@
 <%}%>
 
 
-<form method="POST" action="/usr/article/modify/free"onsubmit="ArticleSave__submitForm(this); return false;">
+<form method="POST" action="/usr/article/modify/free/<%=article.getId()%>"onsubmit="ArticleSave__submitForm(this); return false;">
     <div>
-        <span>제목</span>
-        <input name="id" type="hidden" value="<%=article.getId()%>">
+        <div><%=article.getId()%>번 글</div>
         <div>
             <input name="title" type="text" maxlength="50" placeholder="제목을 입력해주세요." />
         </div>
@@ -52,9 +51,9 @@
     </div>
 
     <div>
-        <span>작성</span>
+        <span>수정</span>
         <div>
-            <input type="submit" value="작성" />
+            <input type="submit" value="수정" />
         </div>
     </div>
 </form>

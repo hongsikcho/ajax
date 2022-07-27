@@ -94,7 +94,7 @@ public class ArticleController {
     }
 
     public void doModify(Rq rq) {
-        long idx = rq.getLongParam("id" , 0);
+        long idx = rq.getLongPathValueByIndex(1, 0);
         String title = rq.getParam("title", "none");
         String body = rq.getParam("body", "none");
 

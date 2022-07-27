@@ -1,5 +1,8 @@
 package com.ll.exam.article.dto;
 
+import lombok.Data;
+
+@Data
 public class ArticleDto {
     private long id;
     private String title;
