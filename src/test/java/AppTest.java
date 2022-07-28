@@ -34,7 +34,7 @@ public class AppTest {
         ArticleDto articleDto = new ArticleDto(1, "제목", "내용");
         String jsonStr = Ut.json.toStr(articleDto, "null");
 
-        ArticleDto original = (ArticleDto)Ut.json.toObj(jsonStr, ArticleDto.class , null);
+        ArticleDto original = (ArticleDto) Ut.json.toObj(jsonStr, ArticleDto.class, null);
         assertThat(original).isEqualTo(articleDto);
     }
 
@@ -89,5 +89,13 @@ public class AppTest {
         }, null);
 
         assertThat(articleDtoMapFromJson).isEqualTo(articleDtoMap);
+    }
+
+    @Test
+    void mapOf() {
+        Map<String, Object> map = Ut.mapOf("이름", "철수", "나이", 26);
+
+        assertThat(map.get("이름")).isEqualTo("철수");
+        assertThat(map.get("나이")).isEqualTo(26);
     }
 }

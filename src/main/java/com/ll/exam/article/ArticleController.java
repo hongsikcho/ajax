@@ -6,7 +6,9 @@ import com.ll.exam.article.dto.ArticleDto;
 import com.ll.exam.util.Ut;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ArticleController {
     private ArticleService articleService;
@@ -107,11 +109,12 @@ public class ArticleController {
     }
 
     public void getArticles(Rq rq) {
-        List<ArticleDto> articleDtos = new ArrayList<>();
+        List<ArticleDto> articleDtos = articleService.findAll();
 
-        articleDtos = articleService.findAll();
+        ResultData<List<ArticleDto>> resultData = new ResultData("성공", "S-1", articleDtos);
 
-        String articleJson = Ut.json.toStr(articleDtos , "");
-        rq.print(articleJson);
+        rq.json(resultData);
     }
+
+
 }
