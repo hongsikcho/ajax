@@ -3,6 +3,7 @@ package com.ll.exam.article;
 import com.ll.exam.Rq;
 
 import com.ll.exam.article.dto.ArticleDto;
+import com.ll.exam.util.Ut;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,5 +104,14 @@ public class ArticleController {
 
         articleService.modify(idx,title,body);
         rq.replace("/usr/article/list/free", "%d번 게시물이 수정되었습니다.".formatted(idx));
+    }
+
+    public void getArticles(Rq rq) {
+        List<ArticleDto> articleDtos = new ArrayList<>();
+
+        articleDtos = articleService.findAll();
+
+        String articleJson = Ut.json.toStr(articleDtos , "");
+        rq.print(articleJson);
     }
 }

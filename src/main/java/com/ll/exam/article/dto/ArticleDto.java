@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ArticleDto {
     private long id;
     private String title;
@@ -20,11 +22,7 @@ public class ArticleDto {
                 '}';
     }
 
-    public ArticleDto(long id, String title, String body) {
-        this.id = id;
-        this.title = title;
-        this.body = body;
-    }
+
 
     public long getId() {
         return id;
