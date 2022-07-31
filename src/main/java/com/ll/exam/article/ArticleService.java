@@ -7,12 +7,12 @@ import java.util.List;
 public class ArticleService {
     private ArticleRepository articleRepository;
 
-    public ArticleService(){
+    public ArticleService() {
         articleRepository = new ArticleRepository();
     }
 
     public long write(String title, String body) {
-        return articleRepository.write(title,body);
+        return articleRepository.write(title, body);
     }
 
     public long writeId() {
@@ -28,10 +28,14 @@ public class ArticleService {
     }
 
     public void remove(ArticleDto articleDto) {
-         articleRepository.remove(articleDto);
+        articleRepository.remove(articleDto);
     }
 
     public void modify(long idx, String title, String body) {
-        articleRepository.modify(idx, title , body);
+        articleRepository.modify(idx, title, body);
+    }
+
+    public List<ArticleDto> findIdGreaterThan(long fromId) {
+        return articleRepository.findAllIdGreaterThan(fromId);
     }
 }

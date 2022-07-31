@@ -121,15 +121,7 @@ public class Rq {
         }
     }
 
-    public long getLongParam(String paramName, long defaultValue) {
-        String value = req.getParameter(paramName);
 
-        if (value == null || value.trim().length() == 0) {
-            return defaultValue;
-        }
-
-        return Long.parseLong(value);
-    }
 
     public void replace(String url, String msg) {
         if(msg.trim().length() > 0 && msg != null){
@@ -173,11 +165,25 @@ public class Rq {
         json(new ResultData(resultCode, msg, data));
     }
 
-    public void SuccessJson(Object data) {
+    public void successJson(Object data) {
         json(data,"S-1","성공");
     }
 
     public void failJson(Object data) {
         json(data,"F-1","실패");
+    }
+
+    public long getLongParam(String paramName, long defaultValue) {
+        String value = req.getParameter(paramName);
+
+        if (value == null) {
+            return defaultValue;
+        }
+
+        try {
+            return Long.parseLong(value);
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
     }
     }

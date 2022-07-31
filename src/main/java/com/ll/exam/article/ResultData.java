@@ -8,8 +8,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class ResultData<T> {
-    private final String msg;
     private String resultCode;
+    private final String msg;
     T data;
 
 }

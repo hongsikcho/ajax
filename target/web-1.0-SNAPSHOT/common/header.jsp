@@ -9,6 +9,9 @@
     <!-- 모바일에서 디자인이 축소되지 않게 하기 위한 코드 -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- 데이지UI 불러오기 -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.20.0/dist/full.css" rel="stylesheet" type="text/css" />
+
     <!-- 제이쿼리 불러오기 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
