@@ -38,7 +38,7 @@
     let article_lastId = 0;
 
     function Atricle_loadMore() {
-        fetch(`/usr/article/getArticles/free?fromId=${article_lastId}`)
+        fetch(`/usr/article/getArticles/free?fromId=\${article_lastId}`)
             .then(data => data.json())
             .then(responseData => {
                 console.log(responseData);
@@ -50,7 +50,7 @@
                     <div class="body">
         <span>\${article.id}</span>
 
-        <span><a href="/usr/article/detail/free/${article.id}">\${article.title}</a></span>
+        <span><a href="/usr/article/detail/free/\${article.id}">\${article.title}</a></span>
 
         <span class="delete"><a onclick="if ( !confirm('정말로 삭제하시겠습니까?') ) return false;"
            href="/usr/article/remove/free/\${article.id}">삭제</a>
@@ -59,9 +59,14 @@
     </div></div>`;
                     $('.articles').append(html);
                 }
+                if(responseData.data.length > 0) {
+                    article_lastId = responseData.data[responseData.data.length - 1].id;
+                }
             });
 
-    }
+        }
+
+
 </script>
 <section>
     <div class="container px-3 mx-auto">
