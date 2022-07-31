@@ -35,10 +35,20 @@
 <%@ include file="../common/header.jsp" %>
 
 <script>
+    let article_lastId = 0;
     function Atricle_loadMore(){
-        $('.articles').append(`
-            <li>하하하</li>
+        fetch(`/usr/article/getArticles/free?fromId=${article_lastId}`)
+        .then(data => data.json())
+        .then(responseData => {
+            console.log(responseData);
+            for(const key in responseData.data){
+                const article = responseData.data[key];
+                $('.articles').append(`
+            <li>\${article.title}</li>
         `);
+        }
+        });
+
     }
 </script>
 <section>
