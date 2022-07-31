@@ -124,5 +124,8 @@ public class ArticleController {
     }
 
 
+    public void showListAuto(Rq rq) {
 
+        rq.view("list2");
+    }
 }
