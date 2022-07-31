@@ -36,18 +36,30 @@
 
 <script>
     let article_lastId = 0;
-    function Atricle_loadMore(){
+
+    function Atricle_loadMore() {
         fetch(`/usr/article/getArticles/free?fromId=${article_lastId}`)
-        .then(data => data.json())
-        .then(responseData => {
-            console.log(responseData);
-            for(const key in responseData.data){
-                const article = responseData.data[key];
-                $('.articles').append(`
-            <li>\${article.title}</li>
-        `);
-        }
-        });
+            .then(data => data.json())
+            .then(responseData => {
+                console.log(responseData);
+                for (const key in responseData.data) {
+                    const article = responseData.data[key];
+
+                    const html = `
+                    <div style= "width : 700px ; margin:auto;">
+                    <div class="body">
+        <span>\${article.id}</span>
+
+        <span><a href="/usr/article/detail/free/${article.id}">\${article.title}</a></span>
+
+        <span class="delete"><a onclick="if ( !confirm('정말로 삭제하시겠습니까?') ) return false;"
+           href="/usr/article/remove/free/\${article.id}">삭제</a>
+        <a href="/usr/article/modify/free/\${article.id}">수정</a></span>
+
+    </div></div>`;
+                    $('.articles').append(html);
+                }
+            });
 
     }
 </script>
@@ -61,11 +73,13 @@
 
         </ul>
 
-        <hr>
+        <hr class="mt-3 mb-3">
 
         <button class="btn btn-sm" onclick="Atricle_loadMore();">불러오기</button>
     </div>
 </section>
-
+<script>
+    Atricle_loadMore();
+</script>
 </html>
 
