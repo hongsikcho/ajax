@@ -51,6 +51,9 @@
 
         <ul style="display: flex;">
             <li style="margin-right: 10px">
+                <a  href="/usr/chat/createRoom">채팅방 생성</a>
+            </li>
+            <li style="margin-right: 10px">
                 <a  href="/usr/article/write/free">자유게시물 작성</a>
             </li>
             <li>

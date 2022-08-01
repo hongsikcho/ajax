@@ -62,6 +62,7 @@
                 if(responseData.data.length > 0) {
                     article_lastId = responseData.data[responseData.data.length - 1].id;
                 }
+                setTimeout(Atricle_loadMore,3000);
             });
 
         }
