@@ -20,7 +20,7 @@ public class ChatRoomRepository {
     private static void makeTestData() {
         IntStream.rangeClosed(1,10).forEach(id ->{
             String title = "제목%d".formatted(id);
-            String body = "내용%d".formatted(id);
+            String body = "채팅방%d".formatted(id);
             create(title,body);
         });
     }
@@ -31,5 +31,9 @@ public class ChatRoomRepository {
         datum.add(newChatRoom);
 
         return 0;
+    }
+
+    public List<chatRoomDto> findAll() {
+        return datum;
     }
 }
