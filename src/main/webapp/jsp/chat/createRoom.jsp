@@ -21,11 +21,11 @@
         form.submit();
     }
 </script>
-<form method="POST" action="/usr/chatRoom/write/free"onsubmit="chatRoomSave__submitForm(this); return false;">
+<form method="POST" action="/usr/chat/createRoom"onsubmit="chatRoomSave__submitForm(this); return false;">
     <div>
         <span>이름</span>
         <div>
-            <input name="title" type="text" maxlength="50" placeholder="이름을 입력해주세요." />
+            <input name="name" type="text" maxlength="50" placeholder="이름을 입력해주세요." />
         </div>
     </div>
 
